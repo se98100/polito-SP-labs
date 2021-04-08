@@ -16,4 +16,7 @@ int main() {
 
     Message m5(move(m3));
     cout << m3 << " -> " << m5 << endl;
+
+    Message m6 = m1;
+    cout << m1 << " -> " << m6 << endl;
 }

@@ -24,6 +24,20 @@ ostream& operator<<(ostream& out, const Message& m) {
     return out;
 }
 
+Message& Message::operator=(const Message& source) {
+    if(&source == this) return *this;
+
+    delete[] _data;
+    _data = nullptr;
+    _size = source._size;
+    _id = source._id;
+    if(source._data != nullptr){
+        _data = new char[_size+1];
+        memcpy(_data, source._data, _size+1);
+    }
+    return *this;
+}
+
 Message::Message() : _size(0), _id(-1) {
     _data = mkMessage(_size);
 }
@@ -31,6 +45,8 @@ Message::Message() : _size(0), _id(-1) {
 Message::Message(int size, long id) : _size(size), _id(id) {
     if(_size > -1){
         _data = mkMessage(_size);
+    }else{
+        _data = nullptr;
     }
 }
 

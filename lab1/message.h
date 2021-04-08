@@ -20,9 +20,12 @@ class Message {
         Message(const Message& source);
         Message(Message&& source);
         ~Message();
+
         const char* getData() const { return _data; }
         long getId() const { return _id; }
         int getSize() const { return _size; }
+
+        Message& operator=(const Message& source);
 };
 
 ostream& operator<<(ostream& out, const Message& m);
