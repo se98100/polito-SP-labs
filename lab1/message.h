@@ -18,6 +18,7 @@ class Message {
         Message();
         Message(int size, long id = 0);
         Message(const Message& source);
+        Message(Message&& source);
         ~Message();
         const char* getData() const { return _data; }
         long getId() const { return _id; }

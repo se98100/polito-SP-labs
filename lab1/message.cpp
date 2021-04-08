@@ -18,7 +18,8 @@ char* mkMessage(int n) {
 }
 
 ostream& operator<<(ostream& out, const Message& m) {
-    string s(m.getData());
+    const char* data = m.getData();
+    string s(data == nullptr ? "NULL" : data);
     out << "[id:" << m.getId() << "][size:" << m.getSize() << "][data:" << s.substr(0, 20) << "]";
     return out;
 }
@@ -37,9 +38,20 @@ Message::~Message() {
     delete[] _data;
 }
 
-Message::Message(const Message &source){
-    _id = source.getId();
-    _size = source.getSize();
-    _data = new char[_size + 1];
-    memcpy(_data, source.getData(), _size+1);
+Message::Message(const Message& source){
+    _id = source._id;
+    _size = source._size;
+    if(source._size > -1) {
+        _data = new char[_size + 1];
+        memcpy(_data, source._data, _size + 1);
+    }
+}
+
+Message::Message(Message&& source) {
+    _id = source._id;
+    _size = source._size;
+    _data = source._data;
+    source._data = nullptr;
+    source._id = -1;
+    source._size = -1;
 }
