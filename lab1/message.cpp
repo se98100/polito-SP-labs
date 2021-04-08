@@ -2,6 +2,7 @@
 // Created by Sergio on 08/04/2021.
 //
 
+#include <cstring>
 #include "message.h"
 
 char* mkMessage(int n) {
@@ -30,9 +31,15 @@ Message::Message(int size, long id) : _size(size), _id(id) {
     if(_size > -1){
         _data = mkMessage(_size);
     }
-};
+}
 
 Message::~Message() {
-    if(_data != nullptr)
-        delete[] _data;
+    delete[] _data;
+}
+
+Message::Message(const Message &source){
+    _id = source.getId();
+    _size = source.getSize();
+    _data = new char[_size + 1];
+    memcpy(_data, source.getData(), _size+1);
 }
