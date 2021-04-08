@@ -38,6 +38,17 @@ Message& Message::operator=(const Message& source) {
     return *this;
 }
 
+Message& Message::operator=(Message&& source) {
+    delete[] _data;
+    _id = source._id;
+    _size = source._size;
+    _data = source._data;
+    source._data = nullptr;
+    source._id = -1;
+    source._size = -1;
+    return *this;
+}
+
 Message::Message() : _size(0), _id(-1) {
     _data = mkMessage(_size);
 }

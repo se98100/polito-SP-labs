@@ -19,4 +19,7 @@ int main() {
 
     Message m6 = m1;
     cout << m1 << " -> " << m6 << endl;
+
+    Message m7 = move(m1);
+    cout << m1 << " -> " << m7 << endl;
 }

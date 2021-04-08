@@ -26,6 +26,7 @@ class Message {
         int getSize() const { return _size; }
 
         Message& operator=(const Message& source);
+        Message& operator=(Message&& source);
 };
 
 ostream& operator<<(ostream& out, const Message& m);
