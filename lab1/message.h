@@ -14,19 +14,19 @@ class Message {
     char* _data;
     int _size;
 
-    public:
-        Message();
-        Message(int size, long id = 0);
-        Message(const Message& source);
-        Message(Message&& source);
-        ~Message();
+public:
+    Message();
+    Message(int size, long id = 0);
+    Message(const Message& source);
+    Message(Message&& source);
+    ~Message();
 
-        const char* getData() const { return _data; }
-        long getId() const { return _id; }
-        int getSize() const { return _size; }
+    const char* getData() const { return _data; }
+    long getId() const { return _id; }
+    int getSize() const { return _size; }
 
-        Message& operator=(const Message& source);
-        Message& operator=(Message&& source);
+    Message& operator=(const Message& source);
+    Message& operator=(Message&& source);
 };
 
 ostream& operator<<(ostream& out, const Message& m);

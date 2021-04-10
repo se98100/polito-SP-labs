@@ -1,11 +1,14 @@
 #include "message.h"
+#include "duration_logger.h"
 using namespace std;
 
 int main() {
-    Message m1(10);
+    DurationLogger logger("main");
+
+    Message m1(100000000);
     cout << m1 << endl;
 
-    Message m2(20, 1);
+    Message m2(200000000, 1);
     cout << m2 << endl;
 
     Message m3;
