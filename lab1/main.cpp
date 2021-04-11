@@ -1,14 +1,15 @@
 #include "message.h"
 #include "duration_logger.h"
+#include "message_store.h"
 using namespace std;
 
 int main() {
-    DurationLogger logger("main");
+    DurationLogger logger("main()");
 
-    Message m1(100000000);
+    Message m1(100000);
     cout << m1 << endl;
 
-    Message m2(200000000, 1);
+    Message m2(200000, 1);
     cout << m2 << endl;
 
     Message m3;
@@ -25,4 +26,6 @@ int main() {
 
     Message m7 = move(m1);
     cout << m1 << " -> " << m7 << endl;
+
+    MessageStore ms(0);
 }

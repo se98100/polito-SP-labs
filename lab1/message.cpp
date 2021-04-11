@@ -58,6 +58,7 @@ Message::Message(int size, long id) : _size(size), _id(id) {
         _data = mkMessage(_size);
     }else{
         _data = nullptr;
+        _id = -1;
     }
 }
 
