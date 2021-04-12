@@ -5,6 +5,7 @@
 #ifndef LAB1_MESSAGE_STORE_H
 #define LAB1_MESSAGE_STORE_H
 
+#include <cstring>
 #include "message.h"
 
 
@@ -16,6 +17,8 @@ class MessageStore {
 public:
     MessageStore(int n);
     ~MessageStore();
+
+    void add(Message& m);
 };
 
 

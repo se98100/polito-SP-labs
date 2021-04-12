@@ -50,7 +50,7 @@ Message& Message::operator=(Message&& source) {
 }
 
 Message::Message() : _size(0), _id(-1) {
-    _data = mkMessage(_size);
+    _data = nullptr;
 }
 
 Message::Message(int size, long id) : _size(size), _id(id) {
@@ -64,12 +64,14 @@ Message::Message(int size, long id) : _size(size), _id(id) {
 
 Message::~Message() {
     delete[] _data;
+    _data = nullptr;
 }
 
 Message::Message(const Message& source){
     _id = source._id;
     _size = source._size;
-    if(source._size > -1) {
+    _data = nullptr;
+    if(source._size > 0) {
         _data = new char[_size + 1];
         memcpy(_data, source._data, _size + 1);
     }
